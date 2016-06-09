@@ -7,6 +7,12 @@ gulp.task('default', function() {
     
     gulp.watch('public/**/*', function(file) {
         server.notify.apply(server, [file]);
+        console.log('refreshing');
     });
-    gulp.watch('server.js', server.start.bind(server));
+    
+    gulp.watch('server.js', function() {
+        server.start.bind(server);
+        console.log('Server restarted');
+    });
+    
 });

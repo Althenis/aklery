@@ -9,6 +9,17 @@ app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// app.use('/about', express.static(__dirname + 'views/about'));
+// app.use('/dist', express.static(__dirname + '/../dist'));
+// app.use('/stylesheets', express.static(__dirname + 'public/stylesheets'));
+// app.use('/partials', express.static(__dirname + '/partials'));
+
+// rewrite for html5mode
+app.all('/*', function(req, res, next) {
+    // Just send the index.html for other files to support HTML5Mode
+    res.sendFile('index.html', { root: __dirname + '/public' });
+});
+
 // Set server port to listen
 app.set('port', (process.env.PORT || 3000));
 
