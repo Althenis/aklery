@@ -1,0 +1,47 @@
+.top-bar, .top-bar ul {
+    background-color: rgb(158,215,71);
+}
+
+.blog-post {
+    margin-top: 10px;
+    padding: 20px;
+    background-color: rgb(177,201,141);
+}
+
+.imageButton {
+    margin: 10px;
+}
+
+.imageBox {
+    /*max-width: 800px;*/
+    display: block;
+    margin: 0 auto;
+    background-color: rgb(210,223,191);
+    padding: 10px;
+}
+
+.comment p {
+    margin: 0;
+}
+
+.comment {
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.comment:nth-child(even) {
+    background-color: rgb(20,78,64);
+}
+
+.comment:nth-child(odd) {
+    background-color: rgb(51,205,168);
+}
+
+.centered {
+    display: block;
+    margin: 0 auto;
+}
+
+.description {
+    margin: 5px 0 5px 0;    
+}
