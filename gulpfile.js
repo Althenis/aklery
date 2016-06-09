@@ -5,8 +5,8 @@ gulp.task('default', function() {
     var server = gls.new('server.js');
     server.start();
     
-    gulp.watch('server.js', function(file) {
+    gulp.watch('public/**/*', function(file) {
         server.notify.apply(server, [file]);
-        server.start.bind(server)();
     });
+    gulp.watch('server.js', server.start.bind(server));
 });
