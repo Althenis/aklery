@@ -19,5 +19,9 @@
   "dependencies": {
     "body-parser": "^1.15.1",
     "express": "^4.13.4"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-live-server": "0.0.30"
   }
 }

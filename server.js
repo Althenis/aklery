@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Set server port to listen
 app.set('port', (process.env.PORT || 3000));
 
-// Run the server
+// Run the server 
 app.listen(app.get('port'), function() {
    console.log('Server running on: ' + app.get('port'));
 });
