@@ -1,0 +1,23 @@
+{
+  "name": "aklery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Althenis/aklery.git"
+  },
+  "author": "Atte Kortesmaa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Althenis/aklery/issues"
+  },
+  "homepage": "https://github.com/Althenis/aklery#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4"
+  }
+}
