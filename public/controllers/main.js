@@ -1,13 +1,16 @@
 angular.module('aklery')
 .controller('MainCtrl', ['$http', function($http) {
     var vm = this;
+    vm.postContent = {};
+    var posts = [];
+    $http.get('posts.json').success(function(data) {
+        posts = data;
+        vm.getRandomImage();
+    });
+       
+    vm.getRandomImage = function() {
+        var index = Math.floor(Math.random() * posts.length);
+        vm.postContent = posts[index];
+    };
     
-    return vm;
 }]);
-
-
-// .controller('ArticlesCtrl', ['$scope','$http', function($scope,$http) {
-//    $http.get('/articles').success(function(data) {
-//       $scope.articles = data;
-//    });
-// }])

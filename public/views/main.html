@@ -8,55 +8,24 @@
 <!-- We can now combine rows and columns when there's only one column in that row -->
 <div class="row small-6 columns">
 
-   <a class="large expanded success button imageButton" href="#">Random Image</a>
-   
+   <a class="large expanded success button imageButton" ng-click="main.getRandomImage()" href="#">Random Image</a>
+
    <div class="blog-post">
-      <h3>Image Title</h3>
-      <small class="text-right" style="color:black;">3.6.2015 by <a href="#">&lt;username&gt;</a></small>
+      <h3 ng-bind="main.postContent.title"></h3>
+      <small class="text-right" style="color:black;">{{main.postContent.createdAt}} by <a href="#">{{main.postContent.username}}</a></small>
       <div class="imageBox">
          <img class="thumbnail centered" src="http://placehold.it/1100x350">
-         <p class="description text-justify">Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus
-            eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus.</p>
+         <p class="description text-justify" ng-bind="main.postContent.description"></p>
       </div>
 
       <h4>Comments</h4>
 
       <div class="commentBox">
-         <div class="comment">
-            <p>Praesent vestibulum dapibus nibh. Praesent vestibulum dapibus nibh. Vivamus aliquet elit ac nisl. Etiam ut purus mattis mauris sodales aliquam. Praesent vestibulum dapibus nibh.</p>
-         </div>
-         <div class="comment">
-            <p>Praesent vestibulum dapibus nibh. Praesent vestibulum dapibus nibh. Vivamus aliquet elit ac nisl. Etiam ut purus mattis mauris sodales aliquam. Praesent vestibulum dapibus nibh.</p>
-         </div>
-         <div class="comment">
-            <p>Praesent vestibulum dapibus nibh. Praesent vestibulum dapibus nibh. Vivamus aliquet elit ac nisl. Etiam ut purus mattis mauris sodales aliquam. Praesent vestibulum dapibus nibh.</p>
-         </div>
-         <div class="comment">
-            <p>Praesent vestibulum dapibus nibh. Praesent vestibulum dapibus nibh. Vivamus aliquet elit ac nisl. Etiam ut purus mattis mauris sodales aliquam. Praesent vestibulum dapibus nibh.</p>
-         </div>
+          <div ng-repeat="comment in main.postContent.comments">
+              <div class="comment">
+                  <div><strong ng-bind="comment.username"></strong>&nbsp;({{comment.createdAt}})</div>
+                  <p ng-bind="comment.comment"></p>
+              </div>
+          </div>
       </div>
-
-      <!-- <div class="callout">
-      <ul class="menu simple">
-        <li><a href="#">Author: Mike Mikers</a></li>
-        <li><a href="#">Comments: 3</a></li>
-      </ul>
-    </div>
-  </div> -->
-
-      <!-- <div class="blog-post">
-    <h3>Awesome blog post title <small>3/6/2015</small></h3>
-    <div class="imageBox">
-        <img class="thumbnail centered" src="http://placehold.it/550x350">
-        <p class="text-justify">Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus.</p>
-    </div>
-    
-    <div class="callout">
-      <ul class="menu simple">
-        <li><a href="#">Author: Mike Mikers</a></li>
-        <li><a href="#">Comments: 3</a></li>
-      </ul>
-    </div>
-  </div> -->
-
    </div>
