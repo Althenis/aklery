@@ -18,7 +18,9 @@
   "homepage": "https://github.com/Althenis/aklery#readme",
   "dependencies": {
     "body-parser": "^1.15.1",
-    "express": "^4.13.4"
+    "dotenv": "^2.0.0",
+    "express": "^4.13.4",
+    "mongojs": "^2.4.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

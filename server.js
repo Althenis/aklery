@@ -1,7 +1,23 @@
 var express = require('express'),
     path = require('path'),
-    bodyParser = require('body-parser');
-    
+    bodyParser = require('body-parser'),
+    dotenv = require('dotenv'),
+    mongojs = require('mongojs');
+
+// Load environment variables from .env at project root
+dotenv.load();
+
+// Connect to db
+var db = mongojs('aklery');
+
+db.on('error', function (err) {
+    console.log('database error', err)
+});
+
+db.on('connect', function () {
+    console.log('database connected')
+});
+
 var app = express();
 app.use(express.static(__dirname + "/public"));
 
@@ -9,13 +25,8 @@ app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// app.use('/about', express.static(__dirname + 'views/about'));
-// app.use('/dist', express.static(__dirname + '/../dist'));
-// app.use('/stylesheets', express.static(__dirname + 'public/stylesheets'));
-// app.use('/partials', express.static(__dirname + '/partials'));
-
 // rewrite for html5mode
-app.all('/*', function(req, res, next) {
+app.all('/*', function(req, res) {
     // Just send the index.html for other files to support HTML5Mode
     res.sendFile('index.html', { root: __dirname + '/public' });
 });
