@@ -14,7 +14,7 @@
       <h3 ng-bind="main.postContent.title"></h3>
       <small class="text-right" style="color:black;">{{main.postContent.createdAt}} by <a href="#">{{main.postContent.username}}</a></small>
       <div class="imageBox">
-         <img class="thumbnail centered" src="http://placehold.it/1100x350">
+         <img class="thumbnail centered" ng-src="{{main.postContent.image}}">
          <p class="description text-justify" ng-bind="main.postContent.description"></p>
       </div>
 

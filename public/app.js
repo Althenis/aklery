@@ -15,8 +15,10 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             controller: 'MainCtrl',
             controllerAs: 'main'
         })
-        .state('about', {
-            url: '/about',
-            templateUrl: 'views/about.html'
+        .state('newpost', {
+            url: '/posts/add',
+            templateUrl: 'views/new-post.html',
+            controller: 'PostCtrl',
+            controllerAs: 'post'
         });
 });
