@@ -3,8 +3,11 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     dotenv = require('dotenv'),
     mongojs = require('mongojs'),
-    multer  = require('multer');
-
+    multer  = require('multer'),
+    fs = require('fs');
+    
+var upload = multer({ dest: 'uploads/' });
+var image = upload.single('file');
 // Load environment variables from .env at project root
 dotenv.load();
 var db = mongojs('aklery', ['posts']);
@@ -17,6 +20,7 @@ var db = mongojs('aklery', ['posts']);
 
 var app = express();
 app.use(express.static(__dirname + "/public"));
+app.use('/scripts', express.static(__dirname + '/node_modules/'));
 // require('./routes/posts')(db);
 // Body Parser
 app.use(bodyParser.json());
@@ -34,25 +38,30 @@ app.get('/posts', function(req, res) {
     });
 });
 
-app.post('/posts/add', function(req, res) {
-    var username = req.body.username;
-    var title = req.body.title;
-    var description = req.body.description;
-    var image = req.body.image;
-    var comments = {};
+app.post('/posts/add', image, function(req, res) {
     
-    var post = {
-        username: username,
-        title: title,
-        description: description,
-        image: image,
-        createdAt: new Date(),
-        comments: comments
-    };
+    if(req.file) {
+        console.log(req.file);
+        console.log(req.body);
+    }   
+    // var username = req.body.username;
+    // var title = req.body.title;
+    // var description = req.body.description;
+    // var image = req.body.image;
+    // var comments = [{}];
+    // 
+    // var post = {
+    //     username: username,
+    //     title: title,
+    //     description: description,
+    //     image: image,
+    //     createdAt: new Date(),
+    //     comments: comments
+    // };
+    // 
+    // db.posts.save(post);
     
-    db.posts.save(post);
     
-    console.log(title, " ", description);
 });
 
 //rewrite for html5mode

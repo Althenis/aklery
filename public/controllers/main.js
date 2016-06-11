@@ -13,13 +13,16 @@ angular.module('aklery')
     vm.getRandomImage = function() {
         var index = Math.floor(Math.random() * posts.length);
         vm.postContent = posts[index];
+        
     };
     
     vm.getAllPosts = function() {
         $http.get('/posts').success(function(data) {
             console.log(data);
             posts = data;
+            vm.getRandomImage();
         });
+        
     };
     
     vm.getAllPosts();

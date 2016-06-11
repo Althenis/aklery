@@ -12,7 +12,7 @@
 
    <div class="blog-post">
       <h3 ng-bind="main.postContent.title"></h3>
-      <small class="text-right" style="color:black;">{{main.postContent.createdAt}} by <a href="#">{{main.postContent.username}}</a></small>
+      <small class="text-right" style="color:black;">{{main.postContent.createdAt | date}} by <a href="#">{{main.postContent.username}}</a></small>
       <div class="imageBox">
          <img class="thumbnail centered" ng-src="{{main.postContent.image}}">
          <p class="description text-justify" ng-bind="main.postContent.description"></p>
@@ -23,7 +23,7 @@
       <div class="commentBox">
           <div ng-repeat="comment in main.postContent.comments">
               <div class="comment">
-                  <div><strong ng-bind="comment.username"></strong>&nbsp;({{comment.createdAt}})</div>
+                  <div><strong ng-bind="comment.username"></strong>&nbsp;({{comment.createdAt | date}})</div>
                   <p ng-bind="comment.comment"></p>
               </div>
           </div>

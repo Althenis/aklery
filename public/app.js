@@ -1,6 +1,5 @@
-var app = angular.module('aklery', ['ui.router']);
-
-app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+angular.module('aklery', ['ui.router','ngFileUpload'])
+.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     
     $locationProvider.html5Mode({
         enabled: true
