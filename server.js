@@ -19,7 +19,6 @@ var s3 = new AWS.S3({signatureVersion: 'v4'});
 dotenv.load();
 var db = mongojs('aklery', ['posts']);
 
-
 var app = express();
 
 
@@ -60,6 +59,23 @@ function randString(x){
     }
     return s;
 }
+
+app.post('/comments/add', function(req, res) {
+    var username = req.body.username;
+    var comment = req.body.comment;
+    var id = mongojs.ObjectId(req.body.id);
+    
+    var newComment = {
+        username: username,
+        comment: comment,
+        createdAt: new Date()
+    };
+    
+    db.posts.update({_id:id}, {$push: {comments: newComment}}, function(err, res) {
+        console.log(res);
+    });
+    console.log('data: ',username,comment,id);
+});
 
 app.post('/posts/add', image, function(req, res) {
     

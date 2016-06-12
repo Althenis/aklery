@@ -1,23 +1,35 @@
 <div class="row small-6 columns">
+    
+    <a class="large expanded success button imageButton" ng-click="main.getRandomImage()" href="#">Random Image</a>
+    
+    <div class="blog-post">
+        <h3 ng-bind="main.postContent.title"></h3>
+        <small class="text-right" style="color:black;">{{main.postContent.createdAt | date}} by <a href="#">{{main.postContent.username}}</a></small>
+        <div class="imageBox">
+            <img class="thumbnail centered" ng-src="{{main.postContent.image}}">
+            <p class="description text-center" ng-bind="main.postContent.description"></p>
+        </div>
 
-   <a class="large expanded success button imageButton" ng-click="main.getRandomImage()" href="#">Random Image</a>
-
-   <div class="blog-post">
-      <h3 ng-bind="main.postContent.title"></h3>
-      <small class="text-right" style="color:black;">{{main.postContent.createdAt | date}} by <a href="#">{{main.postContent.username}}</a></small>
-      <div class="imageBox">
-         <img class="thumbnail centered" ng-src="{{main.postContent.image}}">
-         <p class="description text-center" ng-bind="main.postContent.description"></p>
-      </div>
-
-      <h4>Comments</h4>
-
-      <div class="commentBox">
-          <div ng-repeat="comment in main.postContent.comments">
-              <div class="comment">
-                  <div><strong ng-bind="comment.username"></strong>&nbsp;({{comment.createdAt | date}})</div>
-                  <p ng-bind="comment.comment"></p>
-              </div>
-          </div>
-      </div>
-   </div>
+        <h4>Comments</h4>
+        <div class="newComment">
+            <form ng-submit="main.addComment()" name="main.commentForm">
+                <label>Username
+                    <input type="text" ng-model="main.comment.username" />
+                </label>
+                <label>Comment
+                <textarea ng-model="main.comment.comment"></textarea>
+            </label>
+            <button type="submit" class="button info">Send</button>
+            </form>
+        </div>
+        <div class="commentBox">
+            <div ng-repeat="comment in main.postContent.comments">
+                <div class="comment">
+                    <div><strong ng-bind="comment.username"></strong>&nbsp;({{comment.createdAt | date}})</div>
+                    <p ng-bind="comment.comment"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>$(document).foundation();</script>
+</div>
