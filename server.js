@@ -43,9 +43,11 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get('/posts', function(req, res) {
-
-    db.posts.find(function(err, docs) {
-        console.log(docs);
+    
+    // Find random document from posts collection
+    db.posts.aggregate({ $sample: { size: 1 } }, function(err, docs) {
+        // concat image name with s3 address
+        docs[0].image = process.env.AWS_S3_BUCKET + docs[0].image;
         res.json(docs);
     });
 });
@@ -75,7 +77,7 @@ app.post('/posts/add', image, function(req, res) {
     var date = moment().format('DD-MM-YYYY');
     
     // path / location for image
-    var key = 'images/' + date + '/' + name;
+    var key = date + '/' + name;
     
     var params = {
         ACL: 'public-read',

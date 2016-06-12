@@ -1,7 +1,8 @@
-<div class="row small-6 columns">
-   <form ng-submit="post.submitForm()" name="post.form">
+<div class="row small-4 columns">
+   <form class="postForm" ng-submit="post.submitForm()" name="post.form">
+      <h3>Post Image</h3>
       <label>
-         Username
+         Nickname
          <input type="text" ng-model="post.newPost.username" />
       </label>
       <label>
@@ -10,19 +11,30 @@
       </label>
       <label>
          Image:
-         <div class="button" ngf-select ng-model="post.file" name="file" 
-         ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" 
-         >Select</div>
-         <!-- <div ngf-drop ng-model="files" class="drop-box">Drop</div> -->
-         <!-- <div class="button" ngf-select="post.upload($file)">Upload on file select</div> -->
-         <!-- <div ngf-drop="uploadFiles($files)" class="drop-box"
-  ngf-drag-over-class="'dragover'" ngf-multiple="true" 
-  ngf-pattern="'image/*,application/pdf'">Drop Images or PDFs files here</div> -->
+         <div class="row selectBox">
+            <div class="small-6 columns">
+                <div ngf-select ngf-drop ng-model="post.file" ngf-model-invalid="invalidFiles"
+                    ngf-multiple="false" ngf-pattern="pattern" ngf-accept="acceptSelect"
+                    ng-disabled="disabled" ngf-capture="capture" ngf-drag-over-class="dragOverClassObj"
+                    ngf-validate="validateObj" ngf-resize="resizeObj"
+                    ngf-resize-if="resizeIfFn($file, $width, $height)"
+                    ngf-dimensions="dimensionsFn($file, $width, $height)"
+                    ngf-duration="durationFn($file, $duration)" 
+                    ngf-keep="keepDistinct ? 'distinct' : keep" ngf-fix-orientation="orientation"
+                    ngf-allow-dir="allowDir" class="drop-box" ngf-drop-available="dropAvailable">Select
+                    <span ng-show="dropAvailable"> or Drop File</span>
+                </div>
+            </div>
+            <div class="small-6 columns">
+                <img style="max-height: 135px;" ngf-src="post.file">
+            </div>
+        </div>
       </label>
       <label>
          Description
          <textarea ng-model="post.newPost.description"></textarea>
       </label>
-      <button type="submit" class="button">Submit</button>
+      <button type="submit" class="button secondary">Submit</button>
    </form>
 </div>
+ <!-- <div class="button" ngf-select ng-model="post.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100">Select</div> -->

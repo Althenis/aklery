@@ -45,3 +45,38 @@
 .description {
     margin: 5px 0 5px 0;    
 }
+
+.postForm {
+    margin-top: 30px;
+    padding: 10px 20px 10px 20px;
+    background-color: rgb(177,201,141);
+}
+
+.postForm label {
+    background-color: rgb(210,223,191);
+    margin-bottom: 10px;
+    padding: 2px 10px 2px 10px;
+}
+
+.drop-box {
+    background: #F8F8F8;
+    border: 5px dashed #DDD;
+    width: 170px;
+    text-align: center;
+    padding: 50px 10px;
+    margin-left: 10px;
+}
+
+.preview {
+    clear: both;
+}
+
+.preview img {
+    max-width: 100%;
+    max-height: 135px;
+}
+
+.selectBox {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
