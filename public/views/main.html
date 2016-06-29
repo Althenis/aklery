@@ -11,23 +11,35 @@
         </div>
 
         <h4>Comments</h4>
+        <!-- <p>Submitted: {{main.commentForm.$submitted}}</p>
+        <p>Pristine: {{main.commentForm.$pristine}}</p>
+        <p>Username touched: {{main.commentForm.username.$touched}}</p>
+        <p>comment touched: {{main.commentForm.comment.$touched}}</p> -->
         <div class="newComment">
-            <form ng-submit="main.addComment()" name="main.commentForm">
+            <form ng-submit="main.addComment()" name="main.commentForm" novalidate>
+                
                 <label>Username
-                    <input type="text" ng-model="main.comment.username" />
+                    <input type="text" name="username" ng-model="main.comment.username" required ng-minlength="2" />
+                    <div ng-show="main.commentForm.$submitted">
+                        <span ng-show="main.commentForm.username.$pristine || main.commentForm.username.$error.minlength">Username must be longer than 1</span>
+                    </div>       
                 </label>
+                
                 <label>Comment
-                <textarea ng-model="main.comment.comment"></textarea>
-            </label>
-            <button type="submit" class="button info">Send</button>
+                    <textarea name="comment" ng-model="main.comment.comment" required ng-minlength="10"></textarea>
+                    <div ng-show="main.commentForm.$submitted">
+                        <span ng-show="main.commentForm.comment.$pristine || main.commentForm.comment.$error.minlength">Comment must be at least 10 characters</span>
+                    </div>
+                </label>
+            
+                <button type="submit" class="button info">Send</button>
+            
             </form>
         </div>
         <div class="commentBox">
-            <div ng-repeat="comment in main.postContent.comments | orderBy:'-createdAt'">
-                <div class="comment">
+            <div class="comment" ng-repeat="comment in main.postContent.comments | orderBy:'-createdAt'">
                     <div><strong ng-bind="comment.username"></strong>&nbsp;({{ comment.createdAt | commentDate }})</div>
                     <p ng-bind="comment.comment"></p>
-                </div>
             </div>
         </div>
     </div>

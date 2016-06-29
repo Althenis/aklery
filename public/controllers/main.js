@@ -5,7 +5,7 @@ angular.module('aklery')
     var vm = this;
     vm.postContent = {};
     vm.comment = {};
-       
+
     vm.getRandomImage = function() {
         $http.get('/posts').success(function(data) {
             vm.postContent = data[0];
@@ -14,14 +14,20 @@ angular.module('aklery')
     vm.getRandomImage();
     
     vm.addComment = function() {
-        console.log("id: " + vm.postContent._id + " user: " + vm.comment.username + " comment: " + vm.comment.comment);
-        vm.comment.id = vm.postContent._id;
-        vm.postContent.comments.push(vm.comment);
-        $http.post('/comments/add',vm.comment).then(function() {
-            console.log('ok');
-        }, function() {
-            console.log('err');
-        });
+        if(vm.comment.username && vm.comment.comment) {
+            console.log("Comment");
+            vm.comment.id = vm.postContent._id;
+            vm.postContent.comments.push(vm.comment);
+            $http.post('/comments/add',vm.comment).then(function() {
+                console.log('ok');
+            }, function() {
+                console.log('err');
+            });
+            vm.commentForm.$setPristine();
+            vm.commentForm.$setUntouched();
+            vm.comment = {};
+        }
+                
     };    
 }]).filter('commentDate', function($filter) {
     return function(input) {

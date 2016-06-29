@@ -74,7 +74,6 @@ app.post('/comments/add', function(req, res) {
     db.posts.update({_id:id}, {$push: {comments: newComment}}, function(err, res) {
         console.log(res);
     });
-    console.log('data: ',username,comment,id);
 });
 
 app.post('/posts/add', image, function(req, res) {

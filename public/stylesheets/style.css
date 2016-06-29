@@ -25,12 +25,12 @@
 }
 
 .comment {
-    padding: 5px;
+    padding: 5px 15px 5px 15px;
     margin-bottom: 15px;
 }
 
 .comment:nth-child(even) {
-    background-color: rgb(20,78,64);
+    background-color: rgb(69,180,153);
 }
 
 .comment:nth-child(odd) {
@@ -78,5 +78,13 @@
 
 .selectBox {
     margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.newComment > form > label > input, .newComment > form > label > textarea {
+    margin-bottom: 0;
+}
+
+.newComment > form > label {
     margin-bottom: 15px;
 }
