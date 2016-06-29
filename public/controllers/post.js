@@ -5,7 +5,8 @@ angular.module('aklery')
         vm.newPost = {};
 
         vm.submitForm = function() {
-            if (vm.form.file.$valid && vm.file) {
+            if (vm.form.$valid && vm.file) {
+                console.log("file upload initiated");
                 vm.upload(vm.file);
             }
         };

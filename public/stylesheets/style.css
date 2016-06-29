@@ -52,10 +52,22 @@
     background-color: rgb(177,201,141);
 }
 
-.postForm label {
+.postForm > label {
     background-color: rgb(210,223,191);
-    margin-bottom: 10px;
+    /*margin-bottom: 10px;*/
     padding: 2px 10px 2px 10px;
+}
+
+.error {
+    padding-left: 10px;
+    background-color: rgb(210,223,191);
+    height: 25px;
+    margin-bottom: 15px;
+    
+}
+
+#submitNewPost {
+    margin-top: 15px;
 }
 
 .drop-box {
@@ -81,7 +93,9 @@
     margin-bottom: 15px;
 }
 
-.newComment > form > label > input, .newComment > form > label > textarea {
+.newComment > form > label > input, 
+.newComment > form > label > textarea,
+.postForm > label > input {
     margin-bottom: 0;
 }
 

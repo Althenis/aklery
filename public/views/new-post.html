@@ -1,19 +1,33 @@
 <div class="row small-4 columns">
-   <form class="postForm" ng-submit="post.submitForm()" name="post.form">
+   <div class="newPost">
+   <form class="postForm" ng-submit="post.submitForm()" name="post.form" novalidate>
       <h3>Post Image</h3>
+      
       <label>
          Nickname
-         <input type="text" ng-model="post.newPost.username" />
+         <input type="text" ng-model="post.newPost.username" name="username" required ng-minlength="1" />
       </label>
+      <div class="error">
+          <div ng-show="post.form.$submitted">
+              <span ng-show="post.form.username.$pristine || post.form.username.$error.minlength">Username must be longer than 1</span>
+          </div>   
+      </div>
+     
       <label>
          Title
-         <input type="text" ng-model="post.newPost.title" />
+         <input type="text" ng-model="post.newPost.title" name="title" required ng-minlength="5" /> 
       </label>
+      <div class="error">
+          <div ng-show="post.form.$submitted">
+              <span ng-show="post.form.title.$pristine || post.form.title.$error.minlength">Title must be at least 5 characters</span>
+          </div>   
+      </div>
+      
       <label>
          Image:
          <div class="row selectBox">
             <div class="small-6 columns">
-                <div ngf-select ngf-drop ng-model="post.file" ngf-model-invalid="invalidFiles"
+                <div name="image" ngf-select ngf-drop ng-model="post.file" ngf-model-invalid="invalidFiles"
                     ngf-multiple="false" ngf-pattern="pattern" ngf-accept="acceptSelect"
                     ng-disabled="disabled" ngf-capture="capture" ngf-drag-over-class="dragOverClassObj"
                     ngf-validate="validateObj" ngf-resize="resizeObj"
@@ -28,13 +42,20 @@
             <div class="small-6 columns">
                 <img style="max-height: 135px;" ngf-src="post.file">
             </div>
-        </div>
+        </div>        
       </label>
+      <div class="error">
+          <div ng-show="post.form.$submitted">
+              <span ng-show="post.form.image.$pristine">No image selected</span>
+          </div>
+      </div>
+      
       <label>
          Description
-         <textarea ng-model="post.newPost.description"></textarea>
+         <textarea ng-model="post.newPost.description" name="description"></textarea>
       </label>
-      <button type="submit" class="button secondary">Submit</button>
+      <button id="submitNewPost" type="submit" class="button secondary">Submit</button>
    </form>
+    </div>
 </div>
  <!-- <div class="button" ngf-select ng-model="post.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100">Select</div> -->

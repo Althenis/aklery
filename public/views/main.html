@@ -18,10 +18,10 @@
         <div class="newComment">
             <form ng-submit="main.addComment()" name="main.commentForm" novalidate>
                 
-                <label>Username
+                <label>Nickname
                     <input type="text" name="username" ng-model="main.comment.username" required ng-minlength="2" />
                     <div ng-show="main.commentForm.$submitted">
-                        <span ng-show="main.commentForm.username.$pristine || main.commentForm.username.$error.minlength">Username must be longer than 1</span>
+                        <span ng-show="main.commentForm.username.$pristine || main.commentForm.username.$error.minlength">Nickname must be longer than 1</span>
                     </div>       
                 </label>
                 

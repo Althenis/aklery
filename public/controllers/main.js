@@ -14,15 +14,21 @@ angular.module('aklery')
     vm.getRandomImage();
     
     vm.addComment = function() {
-        if(vm.comment.username && vm.comment.comment) {
-            console.log("Comment");
+        // Only add comment if form is valid
+        if(vm.commentForm.$valid) {
+            
+            // get id of the post, so comments can be linked
             vm.comment.id = vm.postContent._id;
+            
+            // Display comment in view immediately
             vm.postContent.comments.push(vm.comment);
+            
             $http.post('/comments/add',vm.comment).then(function() {
                 console.log('ok');
             }, function() {
                 console.log('err');
             });
+            // clear the form
             vm.commentForm.$setPristine();
             vm.commentForm.$setUntouched();
             vm.comment = {};
