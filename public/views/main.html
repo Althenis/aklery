@@ -23,9 +23,9 @@
             </form>
         </div>
         <div class="commentBox">
-            <div ng-repeat="comment in main.postContent.comments">
+            <div ng-repeat="comment in main.postContent.comments | orderBy:'-createdAt'">
                 <div class="comment">
-                    <div><strong ng-bind="comment.username"></strong>&nbsp;({{comment.createdAt | date}})</div>
+                    <div><strong ng-bind="comment.username"></strong>&nbsp;({{ comment.createdAt | commentDate }})</div>
                     <p ng-bind="comment.comment"></p>
                 </div>
             </div>
