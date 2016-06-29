@@ -5,12 +5,27 @@ angular.module('aklery')
     var vm = this;
     vm.postContent = {};
     vm.comment = {};
+    vm.history = [];
+
+
+    vm.getImage = function(id) {
+        $http.get('/posts/post/' + id).success(function(data) {
+            vm.postContent = data
+            console.log("GOT: " + JSON.stringify(data));
+        });
+    };
 
     vm.getRandomImage = function() {
         $http.get('/posts').success(function(data) {
             vm.postContent = data[0];
+            console.log(data[0]);
+            vm.history.push({
+                title: data[0].title,
+                _id: data[0]._id
+            });
         });
     };    
+    
     vm.getRandomImage();
     
     vm.addComment = function() {

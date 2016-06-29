@@ -41,16 +41,29 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
+// Find random document from posts collection
 app.get('/posts', function(req, res) {
     
-    // Find random document from posts collection
-    db.posts.aggregate({ $sample: { size: 1 } }, function(err, docs) {
+    db.posts.aggregate({ $sample: { size: 1 } }, function(err, doc) {
         // concat image name with s3 address
-        docs[0].image = process.env.AWS_S3_BUCKET + docs[0].image;
-        res.json(docs);
+        doc[0].image = process.env.AWS_S3_BUCKET + doc[0].image;
+        res.json(doc);
     });
 });
 
+// Find document by id
+app.get('/posts/post/:id', function(req, res) {
+    console.log(req.params.id);
+    var imageId = req.params.id;
+    db.posts.findOne({
+        _id: mongojs.ObjectId(imageId)
+    }, function(err, doc) {
+        doc.image = process.env.AWS_S3_BUCKET + doc.image;
+        res.json(doc);
+    });
+});
+
+// Generate a random string to use as image name
 function randString(x){
     var s = "";
     while(s.length<x&&x>0){

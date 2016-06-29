@@ -4,6 +4,7 @@
 
 .blog-post {
     margin-top: 10px;
+    margin-bottom: 50px;
     padding: 20px;
     background-color: rgb(177,201,141);
 }
@@ -101,4 +102,8 @@
 
 .newComment > form > label {
     margin-bottom: 15px;
+}
+
+.history {
+    margin-top: 66px;
 }
