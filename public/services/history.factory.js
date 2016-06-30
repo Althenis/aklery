@@ -14,5 +14,9 @@ angular
             $localStorage.history.push(image);
         };
         
+        service.deleteHistory = function() {
+            $localStorage.history = [];
+        };
+        
         return service;
     }]);

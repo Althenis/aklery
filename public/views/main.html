@@ -1,5 +1,5 @@
 <div class="row">
-<div class="small-10 small-offset-1 columns">
+<div class="small-9 small-offset-1 columns">
     
     <a class="large expanded success button imageButton" ng-click="main.getRandomImage()" href="#">Random Image</a>
     
@@ -46,8 +46,8 @@
     </div>
     <script>$(document).foundation();</script>
 </div>
-<div class="medium-1 columns history">
-     <h4>History</h4>
+<div class="medium-2 columns history">
+     <h4>History <a class="fi-trash" ng-click="main.deleteHistory()"></a></h4>
      <ul class="menu vertical" ng-repeat="item in main.history">
        <li><a ng-bind="item.title" ng-click="main.getImage(item._id)"></a></li>
      </ul>

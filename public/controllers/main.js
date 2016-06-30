@@ -47,7 +47,15 @@ angular.module('aklery')
             vm.comment = {};
         }
                 
-    };    
+    };
+    
+    vm.deleteHistory = function() {
+        if(confirm("Delete History?")) {
+            History.deleteHistory();
+            vm.history = History.getHistory();
+        }
+    };
+    
 }]).filter('commentDate', function($filter) {
     return function(input) {
         var postDate = moment(input);
