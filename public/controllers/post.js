@@ -1,5 +1,5 @@
 angular.module('aklery')
-    .controller('PostCtrl', ['$http', 'Upload', function($http, Upload) {
+    .controller('PostCtrl', ['$state', '$http', 'Upload', function($state, $http, Upload) {
         var vm = this;
 
         vm.newPost = {};
@@ -21,12 +21,14 @@ angular.module('aklery')
 
             }).then(function(resp) {
                 console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+                $state.go('main');
             }, function(resp) {
                 console.log('Error status: ' + resp.status);
             }, function(evt) {
                 var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                 console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
             });
+            
         };
 
     }]);

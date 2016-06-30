@@ -1,4 +1,4 @@
-angular.module('aklery', ['ui.router','ngFileUpload'])
+angular.module('aklery', ['ui.router','ngFileUpload','ngStorage'])
 .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     
     $locationProvider.html5Mode({

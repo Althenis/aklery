@@ -1,26 +1,24 @@
 'use strict';
 
 angular.module('aklery')
-.controller('MainCtrl', ['$http', function($http) {
+.controller('MainCtrl', ['$http', 'History', function($http, History) {
     var vm = this;
     vm.postContent = {};
     vm.comment = {};
-    vm.history = [];
+    vm.history = History.getHistory();
 
 
     vm.getImage = function(id) {
         $http.get('/posts/post/' + id).success(function(data) {
             vm.postContent = data
-            console.log("GOT: " + JSON.stringify(data));
         });
     };
 
     vm.getRandomImage = function() {
         $http.get('/posts').success(function(data) {
             vm.postContent = data[0];
-            console.log(data[0]);
-            vm.history.push({
-                title: data[0].title,
+            History.writeHistory({
+                title:data[0].title, 
                 _id: data[0]._id
             });
         });

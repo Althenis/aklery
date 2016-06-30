@@ -134,7 +134,7 @@ app.post('/posts/add', image, function(req, res) {
     
     // Insert post to DB
     db.posts.save(post);
-    
+    res.sendStatus(200);
 });
 
 //rewrite for html5mode
